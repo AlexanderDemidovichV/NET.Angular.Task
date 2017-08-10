@@ -7,12 +7,12 @@ angular.
       $locationProvider.hashPrefix('!');
 
       $routeProvider.
-        when('/phones', {
-          template: '<phone-list></phone-list>'
+        when('/contacts', {
+          template: '<contact-list></contact-list>'
         }).
-        when('/phones/:phoneId', {
-          template: '<phone-detail></phone-detail>'
+        when('/contacts/:contactId', {
+          template: '<contact-edit></contact-edit>'
         }).
-        otherwise('/phones');
+        otherwise('/contacts');
     }
   ]);

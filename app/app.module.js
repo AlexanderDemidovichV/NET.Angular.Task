@@ -1,5 +1,8 @@
-'use strict';
+(function(){
+	'use strict';
 
-// Define the `contactsApp` module
-angular.module('contactsApp', []);
+	angular.module('contactsApp', ['ngRoute', 'ngResource']);
+})();
 
+
+	
