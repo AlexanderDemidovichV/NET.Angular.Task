@@ -1,6 +1,6 @@
 <div class="container-fluid">
   	<div class="row">
-	    <div class="col-md-2">
+	    <div class="col-md-12">
 			<p>
 				Search:
 				<input ng-model="vm.query" />
@@ -13,12 +13,30 @@
 		          <option value="age">Newest</option>
 		        </select>
 		    </p>
-			<div class="col-md-10">
-				<ul class="contacts">
-				   	<li ng-repeat="contact in vm.contacts | filter:vm.query | orderBy:vm.orderProp">
-						<a href="#!/contacts/{{contact.id}}">{{contact.name}}</a>
-				   	</li>
-				 </ul>
+			
+			<div style="overflow-x:auto;">
+				<table>
+					<tr>
+						<th></th>
+						<th>Name</th>
+						<th>DOB</th>
+						<th>Phone Number</th>
+						<th>Favorite</th>
+						<th></th>
+					</tr>
+					<tr ng-repeat="contact in vm.contacts | filter:vm.query | orderBy:vm.orderProp">
+						<td>
+						<input type="checkbox"style="border:2px dotted #00f;display:block;background:#ff0000;" />
+						</td>
+						<td>{{contact.name}}</td>
+						<td>{{contact.DOB}}</td>
+						<td>{{contact.PhoneNumber}}</td>
+						<td>
+						<input type="checkbox"style="border:2px dotted #00f;display:block;background:#ff0000;" />
+						</td>
+						<td><a href="#!/contacts/{{contact.id}}">Edit</a></td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
