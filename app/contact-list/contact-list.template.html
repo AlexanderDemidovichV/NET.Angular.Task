@@ -3,19 +3,19 @@
 	    <div class="col-md-2">
 			<p>
 				Search:
-				<input ng-model="$ctrl.query" />
+				<input ng-model="vm.query" />
 			</p>
 
 			<p>
 		        Sort by:
-		        <select ng-model="$ctrl.orderProp">
+		        <select ng-model="vm.orderProp">
 		          <option value="name">Alphabetical</option>
 		          <option value="age">Newest</option>
 		        </select>
 		    </p>
 			<div class="col-md-10">
 				<ul class="contacts">
-				   	<li ng-repeat="contact in $ctrl.contacts | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+				   	<li ng-repeat="contact in vm.contacts | filter:vm.query | orderBy:vm.orderProp">
 						<a href="#!/contacts/{{contact.id}}">{{contact.name}}</a>
 				   	</li>
 				 </ul>

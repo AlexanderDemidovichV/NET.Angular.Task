@@ -4,12 +4,13 @@
 	angular.module('contactsApp').
 	    component('contactList', {
 	      templateUrl: 'contact-list/contact-list.template.html',
-	      controller: ['Contact', ContactListController]
+	      controller: ['Contact', ContactListController],
+	      controllerAs: 'vm'
 	    });
 
 	function ContactListController(Contact) {
-		var self = this;
-		self.orderProp = 'age';
-		self.contacts = Contact.query();
+		var vm = this;
+		vm.orderProp = 'age';
+		vm.contacts = Contact.query();
 }
 })();

@@ -5,12 +5,13 @@
 	  module('contactsApp').
 	  component('contactEdit', {
 	    templateUrl: 'contact-edit/contact-edit.template.html',
-	    controller: ['$routeParams', 'Contact', ContactEditController]
+	    controller: ['$routeParams', 'Contact', ContactEditController],
+	    controllerAs: 'vm'
 	  });
 
 	function ContactEditController($routeParams, Contact){
-	  var self = this;
-	  self.contact = Contact.get({contactId: $routeParams.contactId});
+	  var vm = this;
+	  vm.contact = Contact.get({contactId: $routeParams.contactId});
 	}
 })();
 
