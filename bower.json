@@ -1,0 +1,22 @@
+{
+  "name": "NET.Angular.Task",
+  "homepage": "https://github.com/AlexanderDemidovichV/NET.Angular.Task",
+  "authors": [
+    "PC <PC@DESKTOP-QVDD3Q5>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "angular": "^1.6.5"
+  }
+}
