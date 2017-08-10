@@ -16,7 +16,7 @@
 			<div class="col-md-10">
 				<ul class="contacts">
 				   	<li ng-repeat="contact in $ctrl.contacts | filter:$ctrl.query | orderBy:$ctrl.orderProp">
-						<a href="#/contacts/{{contact.id}}">{{contact.name}}</a>
+						<a href="#!/contacts/{{contact.id}}">{{contact.name}}</a>
 				   	</li>
 				 </ul>
 			</div>

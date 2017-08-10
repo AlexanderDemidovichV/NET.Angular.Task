@@ -1,0 +1,21 @@
+body {
+  padding-top: 20px;
+}
+
+.contacts {
+  list-style: none;
+}
+
+.contacts li {
+  clear: both;
+  height: 40px;
+  padding-top: 15px;
+}
+
+.thumb {
+  float: left;
+  height: 10px;
+  margin: -0.5em 1em 1.5em 0;
+  padding-bottom: 1em;
+  width: 100px;
+}
