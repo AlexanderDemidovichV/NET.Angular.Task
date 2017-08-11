@@ -6,15 +6,19 @@
     config(['$locationProvider', '$routeProvider', config]);
 
   function config($locationProvider, $routeProvider){
-    $locationProvider.hashPrefix('!');
+    $locationProvider.hashPrefix("");
 
     $routeProvider.
       when('/contacts', {
-        template: '<contact-list></contact-list>'
+        template: '<filterable-contact-table></filterable-contact-table>'
       }).
       when('/contacts/:contactId', {
         template: '<contact-edit></contact-edit>'
       }).
       otherwise('/contacts'); 
+    /*$locationProvider.html5Mode({
+                 enabled: true,
+                 requireBase: false
+          });*/
   }
 })();
