@@ -3,12 +3,12 @@
 
 	angular.
 	  module('contactsApp').
-	  factory('Search', [searchService]);
+	  factory('Sort', [sortService]);
 
-	function searchService(){
+	function sortService(){
 		const state = {
 			data: {
-				query: ''
+				orderProp: 'age'
 			}
 		};
 		return {

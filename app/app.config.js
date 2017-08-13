@@ -15,6 +15,9 @@
       when('/contacts/:contactId', {
         template: '<contact-edit></contact-edit>'
       }).
+      when('/favorites', {
+        template: '<favorites-contact></favorites-contact>'
+      }).
       otherwise('/contacts'); 
     /*$locationProvider.html5Mode({
                  enabled: true,

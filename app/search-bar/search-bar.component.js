@@ -3,13 +3,15 @@
 
 	angular.module('contactsApp').
 	    component('searchBar', {
-	      templateUrl: 'search-bar/search-bar.template.html',
-	      controller: ['Search', SearchBarController],
-	      controllerAs: 'vm'
+	    	//transclude: true,
+			templateUrl: 'search-bar/search-bar.template.html',
+			controller: ['Search', SearchBarController],
+			controllerAs: 'vmSearch'
 	    });
 
 	function SearchBarController(Search) {
-		var vm = this;
-		Search.query = vm.query;
+		this.onQueryChange = () => {
+			Search.set({ query: this.text });
+		};
 	}
 })();

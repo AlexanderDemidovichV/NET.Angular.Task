@@ -3,15 +3,15 @@
 
 	angular.module('contactsApp').
 	    component('contactTable', {
-	      templateUrl: 'contact-table/contact-table.template.html',
-	      controller: ['Contact', 'Search', ContactTableController],
-	      controllerAs: 'vm'
+	    	//transclude: true,
+			templateUrl: 'contact-table/contact-table.template.html',
+			controller: ['Contact', 'Search', 'Sort', ContactTableController],
+			controllerAs: 'vmContactTable'
 	    });
 
-	function ContactTableController(Contact, Search) {
-		var vm = this;
-		vm.orderProp = 'age';
-		vm.contacts = Contact.query();
-		vm.query = Search.query;
+	function ContactTableController(Contact, Search, Sort) {
+		this.searchState = Search.get();
+		this.orderProp = Sort.get();
+		this.contacts = Contact.query();
 }
 })();

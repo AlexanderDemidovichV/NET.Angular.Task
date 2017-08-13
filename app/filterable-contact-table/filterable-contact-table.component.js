@@ -6,5 +6,4 @@
 	    	templateUrl: 'filterable-contact-table/filterable-contact-table.template.html'
 	    });
 
-	
 })();
