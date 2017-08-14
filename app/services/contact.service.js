@@ -11,6 +11,13 @@
 	        method: 'GET',
 	        params: {contactId: 'contacts'},
 	        isArray: true
+	      },
+	      update: {
+	      	method: 'PUT'
+	      },
+	      delete: {
+	      	method: 'DELETE',
+	      	params: {contactId: ''}
 	      }
 	    });
 	}

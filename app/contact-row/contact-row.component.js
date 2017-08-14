@@ -2,15 +2,14 @@
 	'use strict';
 
 	angular.module('contactsApp').
-	    component('contactList', {
-	      templateUrl: 'contact-list/contact-list.template.html',
-	      controller: ['Contact', ContactListController],
+	    component('contactRow', {
+	      templateUrl: 'contact-row/contact-row.template.html',
+	      controller: [ContactRowController],
 	      controllerAs: 'vm'
 	    });
 
-	function ContactListController(Contact) {
+	function ContactRowController() {
 		var vm = this;
-		vm.orderProp = 'age';
-		vm.contacts = Contact.query();
+
 }
 })();

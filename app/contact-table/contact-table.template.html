@@ -8,7 +8,7 @@
 			<th>Favorite</th>
 			<th></th>
 		</tr>
-		<tr ng-repeat="contact in vmContactTable.contacts | filter:vmContactTable.searchState.query | orderBy:vmContactTable.orderProp.orderProp">
+		<tr ng-repeat="contact in vmContactTable.contacts | filter:{name:vmContactTable.searchState.query} | orderBy:vmContactTable.orderState.orderProp">
 			<td>
 			<input type="checkbox"style="border:2px dotted #00f;display:block;background:#ff0000;" />
 			</td>
@@ -18,7 +18,7 @@
 			<td>
 			<input type="checkbox"style="border:2px dotted #00f;display:block;background:#ff0000;" />
 			</td>
-			<td><a href="#!/contacts/{{contact.id}}">Edit</a></td>
+			<td><a href="#/contacts/{{contact.id}}">Edit</a></td>
 		</tr>
 	</table>
 </div>

@@ -1,2 +1,34 @@
 <h1>{{vm.contact.name}}</h1>
 
+<form name="contactForm">
+	<p>First Name: <input name="firstName" ng-model="user.name" required</p>
+	<div role="alert">
+      <span class="error" ng-show="contactForm.firstName.$error.required">
+       Required!</span>
+    </div>
+	<p>Last Name: <input required></p>
+	<p>DOB: <input type="date" ng-required="true"></p>
+	<p>Phone number: <input ng-required="true"></p>	
+	<p>
+		Gender: <input ng-required="true" type="radio" name="gender" value="male" checked> Male
+		<input ng-required="true" type="radio" name="gender" value="female"> Female
+	</p>
+	<p>
+		Relationship: 
+		<select ng-required="true">
+			<option value="home">Home</option>
+			<option value="work">Work</option>
+			<option value="other">Other</option>
+		</select>
+	</p>
+	<p>Description: <textarea></textarea></p>
+	<tt>contactForm.firstName.$valid = {{contactForm.firstName.$valid}}</tt><br/>
+</form>
+
+<form name="myForm">
+<input type="checkbox" ng-model="myVar"><br><br>
+
+<input name="myInput" ng-model="myInput" ng-required="myVar">
+
+<h1 ng-if="!myForm.myInput.$valid">The input field cannot be empty</h1>
+</form>

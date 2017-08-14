@@ -11,7 +11,7 @@
 
 	function ContactTableController(Contact, Search, Sort) {
 		this.searchState = Search.get();
-		this.orderProp = Sort.get();
+		this.orderState = Sort.get();
 		this.contacts = Contact.query();
 }
 })();

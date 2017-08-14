@@ -12,6 +12,9 @@
 	function ContactEditController($routeParams, Contact){
 	  var vm = this;
 	  vm.contact = Contact.get({contactId: $routeParams.contactId});
+	  vm.changeName = function(data){
+	  	vm.contact.name = data;
+	  }
 	}
 })();
 
