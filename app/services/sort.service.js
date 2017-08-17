@@ -1,23 +1,30 @@
-(function(){
-	'use strict';
+(function() {
+    'use strict';
 
-	angular.
-	  module('contactsApp').
-	  factory('Sort', [sortService]);
+    angular
+        .module('contactsApp')
+        .factory('SortService', SortService);
 
-	function sortService(){
-		const state = {
+    function SortService() {
+		var state = {
 			data: {
-				orderProp: 'age'
+				orderProp: 'Id'
 			}
 		};
-		return {
-			get() {
-				return state.data;
-			},
-			set(data) {
-				Object.assign(state.data, data);
-			}
-		};
-	}
+        var service = {
+            get: get,
+			set: set
+        };
+        return service;
+
+        ////////////////
+
+        function get() {
+        	return state.data;
+        }
+
+        function set(data) {
+        	Object.assign(state.data, data);
+        }
+    }
 })();

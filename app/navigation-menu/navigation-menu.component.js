@@ -1,11 +1,11 @@
-(function(){
-	'use strict';
+(function() {
+    'use strict';
 
-	angular.module('contactsApp').
-	    component('navigationMenu', {
-	    	//transclude: true,
-			templateUrl: 'navigation-menu/navigation-menu.template.html'
-	    });
+    angular
+        .module('contactsApp')
+        .component('navigationMenu', {
+            templateUrl: 'navigation-menu/navigation-menu.template.html'
 
+        });
 
 })();

@@ -1,0 +1,6 @@
+<form ng-submit="vmContactForm.Submit()" name="contactForm" novalidate>
+  <formly-form model="vmContactForm.model" fields="vmContactForm.fields" options="vmContactForm.options" form="vmContactForm.form">
+    <button type="submit" class="btn btn-primary submit-button" ng-disabled="vmContactForm.form.$invalid">Submit</button>
+    <button type="button" class="btn btn-default" ng-click="vmContactForm.options.resetModel()">Reset</button>
+  </formly-form>
+</form>

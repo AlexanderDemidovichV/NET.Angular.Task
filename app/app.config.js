@@ -3,25 +3,36 @@
 
   angular.
     module('contactsApp').
-    config(['$locationProvider', '$routeProvider', config]);
+    config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', 'blockUIConfig', config]);
 
-  function config($locationProvider, $routeProvider){
+  function config($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider, blockUIConfig){
+    blockUIConfig.autoBlock = true;
+    blockUIConfig.resetOnException = true;
+    blockUIConfig.message = 'Please wait';
+
     $locationProvider.hashPrefix("");
+    $locationProvider.html5Mode(true);
 
-    $routeProvider.
-      when('/contacts', {
-        template: '<filterable-contact-table></filterable-contact-table>'
-      }).
-      when('/contacts/:contactId', {
+    $urlRouterProvider.otherwise("/contacts");
+
+    $stateProvider
+      .state('contacts', {
+        url: "/contacts",
+        views: {
+          '': {
+            templateUrl: './state.template/filterable-contact-table.template.html'
+          }
+        }
+      })
+      .state('contact.edit', {
+        url: "/contacts/:contactId",
         template: '<contact-edit></contact-edit>'
-      }).
-      when('/favorites', {
-        template: '<favorites-contact></favorites-contact>'
-      }).
-      otherwise('/contacts'); 
-    /*$locationProvider.html5Mode({
-                 enabled: true,
-                 requireBase: false
-          });*/
+      })
+      .state('favorite', {
+        url: "/favorites",
+        template: '<favorites></favorites>'
+      });
   }
+
 })();
+

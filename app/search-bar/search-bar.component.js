@@ -1,17 +1,22 @@
-(function(){
-	'use strict';
+(function() {
+    'use strict';
 
-	angular.module('contactsApp').
-	    component('searchBar', {
-	    	//transclude: true,
-			templateUrl: 'search-bar/search-bar.template.html',
-			controller: ['Search', SearchBarController],
-			controllerAs: 'vmSearch'
-	    });
+    angular
+        .module('contactsApp')
+        .component('searchBar', {
+        	templateUrl: 'search-bar/search-bar.template.html',
+            controller: SearchBarController,
+            controllerAs: 'vmSearch'
 
-	function SearchBarController(Search) {
-		this.onQueryChange = () => {
-			Search.set({ query: this.text });
-		};
-	}
+        });
+
+    SearchBarController.$inject = ['SearchService'];
+
+    function SearchBarController(SearchService) {
+    	this.onQueryChange = onQueryChange;
+
+    	function onQueryChange(){
+    		SearchService.set({ query: this.text });
+    	}
+    }
 })();

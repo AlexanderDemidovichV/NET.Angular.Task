@@ -1,24 +1,30 @@
-(function(){
-	'use strict';
+(function() {
+    'use strict';
 
-	angular.
-	  module('contactsApp').
-	  factory('Contact', ['$resource', contactService]);
+    angular
+        .module('contactsApp')
+        .factory('ContactService', contactService);
 
-	function contactService($resource){
-	  return $resource('contacts/:contactId.json', {}, {
-	      query: {
-	        method: 'GET',
-	        params: {contactId: 'contacts'},
-	        isArray: true
-	      },
-	      update: {
-	      	method: 'PUT'
-	      },
-	      delete: {
-	      	method: 'DELETE',
-	      	params: {contactId: ''}
-	      }
-	    });
-	}
+    contactService.$inject = ['$resource'];
+
+    function contactService($resource) {
+        var service = $resource('http://localhost:51997/api/contacts/:contactId', {}, {
+            get: {
+							method: 'GET',
+							params: {contactId: ''},
+							isArray: true
+						},
+						update: {
+							method: 'PUT'
+						},
+						delete: {
+							method: 'DELETE'
+						},
+						post: {
+							method: 'POST'
+						}
+        });
+        return service;
+
+    }
 })();

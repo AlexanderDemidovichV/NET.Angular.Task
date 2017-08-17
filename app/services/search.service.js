@@ -1,23 +1,30 @@
-(function(){
-	'use strict';
+(function() {
+    'use strict';
 
-	angular.
-	  module('contactsApp').
-	  factory('Search', [searchService]);
+    angular
+        .module('contactsApp')
+        .factory('SearchService', SearchService);
 
-	function searchService(){
-		const state = {
+    function SearchService() {
+		var state = {
 			data: {
 				query: ''
 			}
 		};
-		return {
-			get() {
-				return state.data;
-			},
-			set(data) {
-				Object.assign(state.data, data);
-			}
-		};
-	}
+        var service = {
+            get: get,
+			set: set
+        };
+        return service;
+
+        ////////////////
+
+        function get() {
+        	return state.data;
+        }
+
+        function set(data) {
+        	Object.assign(state.data, data);
+        }
+    }
 })();

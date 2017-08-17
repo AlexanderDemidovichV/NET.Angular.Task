@@ -1,34 +1,26 @@
-<h1>{{vm.contact.name}}</h1>
-
-<form name="contactForm">
-	<p>First Name: <input name="firstName" ng-model="user.name" required</p>
-	<div role="alert">
-      <span class="error" ng-show="contactForm.firstName.$error.required">
-       Required!</span>
-    </div>
-	<p>Last Name: <input required></p>
-	<p>DOB: <input type="date" ng-required="true"></p>
-	<p>Phone number: <input ng-required="true"></p>	
+<form name="contactForm" ng-submit="vmContactEdit.Submit()">
+	<p>First Name:<input name="firstName" ng-model="vmContactEdit.contact.Name" ng-maxlength="15" required</p>
+	<p>DOB:<input type="date" ng-model="vmContactEdit.contact.DOB" required></p>
+	<p>Phone number: <input name="phoneNumber" ng-model="vmContactEdit.contact.PhoneNumber" required></p>	
 	<p>
-		Gender: <input ng-required="true" type="radio" name="gender" value="male" checked> Male
-		<input ng-required="true" type="radio" name="gender" value="female"> Female
+	 	Gender:
+	 	<input type="radio" name="gender" value="male" checked> Male
+		<input type="radio" name="gender" value="female"> Female
 	</p>
 	<p>
-		Relationship: 
-		<select ng-required="true">
-			<option value="home">Home</option>
-			<option value="work">Work</option>
-			<option value="other">Other</option>
+		Relationship:
+		<select ng-model="vmContactEdit.contact.Relationship" >
+			<option value="Home">Home</option>
+			<option value="Work">Work</option>
+			<option value="Other">Other</option>
 		</select>
 	</p>
-	<p>Description: <textarea></textarea></p>
-	<tt>contactForm.firstName.$valid = {{contactForm.firstName.$valid}}</tt><br/>
+	<p>Description:
+	<textarea ng-model="vmContactEdit.contact.Description"></textarea>
+	</p>
+
+	<input type="submit" value="Submit">
 </form>
+<a href="/NET.Angular.Task-master/app/contacts/">Cancel</a>
 
-<form name="myForm">
-<input type="checkbox" ng-model="myVar"><br><br>
 
-<input name="myInput" ng-model="myInput" ng-required="myVar">
-
-<h1 ng-if="!myForm.myInput.$valid">The input field cannot be empty</h1>
-</form>

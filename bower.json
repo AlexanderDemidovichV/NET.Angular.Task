@@ -17,6 +17,16 @@
   ],
   "dependencies": {
     "jquery": "^3.2.1",
-    "angular": "^1.6.5"
+    "angular": "^1.6.5",
+    "bootstrap": "^3.3.7",
+    "angular-route": "latest",
+    "angular-mocks": "latest",
+    "angular-resource": "latest",
+    "angular-spinner": "^1.0.1",
+    "angular-block-ui": "latest",
+    "api-check": "^7.5.5",
+    "angular-formly": "^8.4.1",
+    "angular-formly-templates-bootstrap": "^6.3.2",
+    "angular-ui-router": "latest"
   }
 }

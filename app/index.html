@@ -1,32 +1,55 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="contactsApp">
 <head>
+	<base href="/NET.Angular.Task-master/app/">
 	<meta charset="UTF-8">
 	<title>Contacts Application</title>
 
 	<link rel="stylesheet" href="app.css" />
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="bower_components/angular-block-ui/dist/angular-block-ui.min.css"/>
+	<link rel="stylesheet" href="bower_components/angular-ui-select/dist/select.css"/>
+	
+	
 
-	<script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/angular-route/angular-route.js"></script>
-	<script src="bower_components/angular-resource/angular-resource.js"></script>
+</head>
+<body block-ui="mainBlock" >
+	<navigation-menu></navigation-menu>
+	<div ui-view=""></div>
+
+
+
+
+	<script src="bower_components/api-check/dist/api-check.js" ></script>
+	<script src="bower_components/angular/angular.js" ></script>
+	<script src="bower_components/angular-formly/dist/formly.js" ></script>
+	<script src="bower_components/angular-formly-templates-bootstrap/dist/angular-formly-templates-bootstrap.js" ></script>
+	<script src="bower_components/angular-route/angular-route.js" ></script>
+	<script src="bower_components/angular-resource/angular-resource.js" ></script>
+	<script src="bower_components/angular-spinner/dist/angular-spinner.js" ></script>
+	<script src="bower_components/angular-block-ui/dist/angular-block-ui.js" ></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js" ></script>
+	<script src="bower_components/angular-ui-select/dist/select.js" ></script>
+	<script src="bower_components/ng-lodash/build/ng-lodash.js" ></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js" ></script>
 
 	<script src="app.module.js"></script>
 	<script src="app.config.js"></script>
 	<script src="contact-table/contact-table.component.js"></script>
-	<script src="contact-table-buttons/contact-table-buttons.component.js"></script>
+	<script src="favorites/favorites.component.js"></script>
 	<script src="navigation-menu/navigation-menu.component.js"></script>
 	<script src="filterable-contact-table/filterable-contact-table.component.js"></script>
 	<script src="contact-edit/contact-edit.component.js"></script>
+	<script src="contact-form/contact-form.component.js"></script>
 	<script src="search-bar/search-bar.component.js"></script>
 	<script src="order-property/order-property.component.js"></script>
+	<script src="formly-types/datepicker.type.js"></script>
+	<script src="formly-types/inline-radio.type.js"></script>
 	<script src="services/contact.service.js"></script>
 	<script src="services/search.service.js"></script>
 	<script src="services/sort.service.js"></script>
+	<script src="services/block.service.js"></script>
 
-</head>
-<body>
-	<navigation-menu></navigation-menu>
-	<div ng-view></div>
+
 </body>
 </html>
