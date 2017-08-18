@@ -50,6 +50,20 @@
               datepickerPopup: 'dd-MMMM-yyyy',
               type: 'date',
               required: true
+            },
+            validators: {
+              dateOfBirth: {
+                expression: function(viewValue, modelValue) {
+                  var value = modelValue || viewValue;
+                  if (value) {
+                    return futureTimeValidation(value);
+                  } else{
+                    return true;
+                  }
+
+                },
+                message: '$viewValue + " is not a valid time in future"'
+              }
             }
           },
           {
@@ -99,6 +113,12 @@
         ];
       }
       
+      function futureTimeValidation(value){
+        var date = moment(value);
+        var curDate = moment();
+        if (date > curDate)
+          return false;
+      }
 
       function onSubmit() {
         ContactService.post(vm.model);
