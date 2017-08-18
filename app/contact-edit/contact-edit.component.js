@@ -4,20 +4,98 @@
     angular
         .module('contactsApp')
         .component('contactEdit', {
-        	templateUrl: 'contact-edit/contact-edit.template.html',
+        	templateUrl: 'contact-form/contact-form.template.html',
             controller: ContactEditController,
-            controllerAs: 'vmContactEdit'
+            controllerAs: 'vmContactForm'
 
         });
 
-    ContactEditController.$inject = ['$routeParams', 'ContactService', '$http'];
+    ContactEditController.$inject = ['$stateParams', 'ContactService', 'lodash'];
 
-    function ContactEditController($routeParams, ContactService, $http) {
+    function ContactEditController($stateParams, ContactService, lodash) {
     	var vm = this;
-    	vm.contact = {};
-    	vm.Submit = Submit;
-    	vm.EditContact = EditContact;
+        vm.onSubmit = onSubmit;
+        vm.model = {}
+        vm.options = {};
+
     	vm.GetContact = GetContact;
+
+        vm.fields = [
+            {
+              key: 'firstName',
+              type: 'input',
+              templateOptions: {
+                label: 'First Name',
+                placeholder: 'First Name',
+                maxlength: '15',
+                required: true
+              }
+            },
+            {
+              key: 'lastName',
+              type: 'input',
+              templateOptions: {
+                label: 'Last Name',
+                placeholder: 'Last Name',
+                maxlength: '15',
+                required: true
+              }
+            },
+            {
+              key: 'dateOfBirth',
+              type: 'datepicker',
+              templateOptions: {
+                label: 'Date of Birth',
+                datepickerPopup: 'DD-MM-YYYY',
+                type: 'date',
+                required: true
+              }
+            },
+            {
+              key: 'phoneNumber',
+              type: 'input',
+              templateOptions: {
+                label: 'Phone Number',
+                placeholder: 'Phone Number',
+                type: 'number',
+                maxlength: '9',
+                required: true
+              }
+            },
+            {
+              key: 'gender',
+              type: 'radioType',
+              templateOptions: {
+                label: "Gender",
+                options: [
+                    {name: "Male", value: 'm'},
+                    {name: "Female", value: 'f'}
+                ],
+                required: true
+              }
+            },
+            {
+              key: 'relationship',
+              type: 'select',
+              templateOptions: {
+                label: 'Relationship',
+                options: [
+                    {name: "Home", value: 'home'},
+                    {name: "Work", value: 'work'},
+                    {name: "Other", value: 'other'},
+                ],
+                required: true
+              }
+            },
+            {
+              key: 'description',
+              type: 'textarea',
+              templateOptions: {
+                label: 'Description',
+                rows: 10
+              }
+            }
+        ];
 
     	activate();
 
@@ -25,23 +103,24 @@
     		vm.GetContact();
     	}
 
-		  function GetContact(){
-		  	ContactService.get({contactId: $routeParams.contactId}, function(result){
-		  		vm.contact = result;
-		  	});
-		  }
+        function GetContact(){
+        	ContactService.get({contactId: $stateParams.contactId}, function(result){
+        		vm.model = {
+                    firstName: result.FirstName,
+                    lastName: result.LastName,  
+                    dateOfBirth: moment(result.DOB).format('DD-MM-YYYY'),
+                    phoneNumber: _.toNumber(result.PhoneNumber),
+                    gender: result.Gender,
+                    relationship: result.Relationship,
+                    description: result.Description,
+                    id: result.Id
+                }
+        	});
+        }
 
-		  function Submit() {
-		  	vm.EditContact();
+        function onSubmit() {
+        	ContactService.update({contactId: vm.model.id}, vm.model);
 	    };
 
-	    function EditContact() {
-    	  	var config = {
-                headers : {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-    		};
-	  	    $http.post('http://localhost:51997/api/contacts', JSON.stringify(vm.contact), config);
-		};
     }
 })();

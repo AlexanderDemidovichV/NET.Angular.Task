@@ -9,7 +9,9 @@
             controllerAs: 'vmContactForm'
         });
 
-    function ContactFormController() {
+    ContactFormController.$inject = ['ContactService'];
+
+    function ContactFormController(ContactService) {
       var vm = this;
       vm.onSubmit = onSubmit;
       vm.model = {}
@@ -93,7 +95,7 @@
       ];
 
       function onSubmit() {
-        console.log("hi");
+        ContactService.post(vm.model);
       }
     }
 })();

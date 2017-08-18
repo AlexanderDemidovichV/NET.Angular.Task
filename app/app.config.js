@@ -20,17 +20,33 @@
         url: "/contacts",
         views: {
           '': {
-            templateUrl: './state.template/filterable-contact-table.template.html'
+            templateUrl: './state.template/filterable-contact-table.state.template.html'
           }
         }
       })
-      .state('contact.edit', {
-        url: "/contacts/:contactId",
-        template: '<contact-edit></contact-edit>'
+      .state('contact', {
+        url: "/contact/:contactId",
+        views: {
+          '': {
+            templateUrl: './state.template/contact-add.state.template.html'
+          }
+        }
       })
       .state('favorite', {
         url: "/favorites",
-        template: '<favorites></favorites>'
+        views: {
+          '': {
+            templateUrl: './state.template/favorite.state.template.html'
+          }
+        }
+      })
+      .state('contact/add', {
+        url: "/contact",
+        views: {
+          '': {
+            templateUrl: './state.template/contact-add.state.template.html'
+          }
+        }
       });
   }
 

@@ -28,7 +28,7 @@
     	}	
 
     	function getContacts(){
-    		ContactService.get(function(result) {
+    		ContactService.query(function(result) {
         	   vm.contacts = result;
                
                vm.isListEmpty = isFavorites();

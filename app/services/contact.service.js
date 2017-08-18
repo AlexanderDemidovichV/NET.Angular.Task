@@ -9,7 +9,7 @@
 
     function contactService($resource) {
         var service = $resource('http://localhost:51997/api/contacts/:contactId', {}, {
-            get: {
+            query: {
 							method: 'GET',
 							params: {contactId: ''},
 							isArray: true
