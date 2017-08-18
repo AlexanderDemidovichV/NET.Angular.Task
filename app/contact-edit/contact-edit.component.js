@@ -53,7 +53,22 @@
               datepickerPopup: 'DD-MM-YYYY',
               type: 'date',
               required: true
+            },
+            validators: {
+              dateOfBirth: {
+                expression: function(viewValue, modelValue) {
+                  var value = modelValue || viewValue;
+                  if (value) {
+                    return futureTimeValidation(value);
+                  } else{
+                    return true;
+                  }
+
+                },
+                message: '$viewValue + " is not a valid time in future"'
+              }
             }
+
           },
           {
             key: 'phoneNumber',
@@ -101,6 +116,10 @@
           }
         ];
     	}
+
+      function futureTimeValidation(value){
+        
+      }
 
       function GetContact(){
       	ContactService.get({contactId: $stateParams.contactId}, function(result){

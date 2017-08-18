@@ -30,7 +30,7 @@
         url: "/contact/:contactId",
         views: {
           '': {
-            templateUrl: './state.template/contact-add.state.template.html'
+            templateUrl: './state.template/contact-edit.state.template.html'
           }
         }
       })
