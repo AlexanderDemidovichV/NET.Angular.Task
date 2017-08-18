@@ -116,8 +116,11 @@
       function futureTimeValidation(value){
         var date = moment(value);
         var curDate = moment();
-        if (date > curDate)
+        if (date > curDate){
           return false;
+        } else{
+          return true;
+        }
       }
 
       function onSubmit() {
