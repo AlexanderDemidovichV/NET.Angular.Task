@@ -15,14 +15,12 @@
         var vm = this;
 
         var countContactsToDelete = 0;
-        vm.contactsToDelete = [];
         vm.contacts = [];
         vm.searchState = {};
         vm.orderState = {};
 
         vm.deleteContacts = deleteContacts;
         vm.updateContact = updateContact;
-        vm.getContacts = getContacts;
         vm.updateToDelete = updateToDelete;
         vm.isRemoveable = isRemoveable;
 
@@ -30,21 +28,7 @@
 
         function activate(){
 
-            vm.getContacts();
-            
-                /*var ppost = ContactService.post(vm.contacts[1], function(){
-                    var updated = vm.contacts[1].Name = "udppp";
-                    var pput = ContactService.update({contactId: 1}, vm.contacts[1], function(){
-                        var ddelete = ContactService.delete({contactId: 1});
-                    });
-                });*/
-
-                
-                //var ddelete = ContactService.delete({contactId: 1});
-                /*$http.put('http://localhost:51997/api/contacts', JSON.stringify(vm.contacts[1]), { params: { Id: 2}}).then(function(result){
-                    var temp = result;
-                //vm.contacts = result.data;
-                });*/
+            getContacts();
 
             vm.searchState = SearchService.get();
             vm.orderState = SortService.get();
@@ -66,7 +50,7 @@
         }
 
         function isRemoveable(){
-            if (countContactsToDelete <= 2){
+            if (countContactsToDelete < 2){
                 return true;
             }
             else{
@@ -93,20 +77,8 @@
                 if(contact.SelectedToDelete === true)
                     ContactService.delete({contactId: contact.Id});
             });
-            vm.getContacts();
-
-            /*vm.contacts.forEach(function(contact){
-                if(contact.SelectedToDelete === true)
-                    ContactService.delete({contactId: contact.Id});
-            });*/
-            /*var ret = async.filter(vm.contacts, function(contact, index, callback){
-                if(contact.SelectedToDelete === true)
-                    ContactService.delete({contactId: contact.Id});
-            }, function(err, results){
-                console.log(results);
-            });*/
+            getContacts();
         }
-
 
     }
 })();

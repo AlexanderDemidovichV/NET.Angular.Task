@@ -3,9 +3,11 @@
 
   angular.
     module('contactsApp').
-    config(['$locationProvider', '$stateProvider', '$urlRouterProvider', '$httpProvider', 'blockUIConfig', config]);
+    config(config);
 
-  function config($locationProvider, $stateProvider, $urlRouterProvider, $httpProvider, blockUIConfig){
+  config.$inject = ['$locationProvider', '$stateProvider', '$urlRouterProvider', 'blockUIConfig'];
+
+  function config($locationProvider, $stateProvider, $urlRouterProvider, blockUIConfig){
     blockUIConfig.autoBlock = true;
     blockUIConfig.resetOnException = true;
     blockUIConfig.message = 'Please wait';

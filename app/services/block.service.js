@@ -8,18 +8,18 @@
     BlockUiServiceController.$inject = ['blockUI'];
 
     function BlockUiServiceController(blockUI) {
-    		var myBlock = blockUI.instances.get("mainBlock");
+    	var mainBlock = blockUI.instances.get("mainBlock");
         this.start = startBlock;
         this.stop = stopBlock;
 
         ////////////////
 
         function startBlock() {
-        	myBlock.start();
+        	mainBlock.start();
         }
 
         function stopBlock() {
-        	myBlock.stop();
+        	mainBlock.stop();
         }
 
     }

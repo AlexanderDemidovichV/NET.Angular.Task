@@ -4,7 +4,7 @@
     angular
         .module('contactsApp')
         .component('favorites', {
-        		templateUrl: 'favorites/favorites.template.html',
+                templateUrl: 'favorites/favorites.template.html',
             controller: FavoritesController,
             controllerAs: 'vmFavorite'
 
@@ -13,30 +13,40 @@
     FavoritesController.$inject = ['ContactService', 'lodash'];
 
     function FavoritesController(ContactService, lodash) {
-    	var vm = this;
-    	vm.contacts = [];
-    	vm.getContacts = getContacts;
-        vm.isFavorites = isFavorites;
-        vm.isListEmpty = true; 
+        var vm = this;
+        var countFavorite = 0;
+        vm.contacts = [];
 
-        vm.isFavoritess = (list) => list.find((x) => x.Favorite === true) || (vm.isListEmpty = false);
+        vm.isListEmpty = isListEmpty; 
 
-    	activate();
+        activate();
 
-    	function activate(){
-    		vm.getContacts();
-    	}	
+        function activate(){
+            getContacts();
+        }   
 
-    	function getContacts(){
-    		ContactService.query(function(result) {
-        	   vm.contacts = result;
-               
-               vm.isListEmpty = isFavorites();
-			});
-    	}
+        function getContacts(){
+            ContactService.query(function(result) {
+                vm.contacts = result;
 
-        function isFavorites(){
-            return !_.every(vm.contacts, ['Favourite', false]);
+                getCountFavourites();
+            });
+        }
+
+        function getCountFavourites(){
+            _.filter(vm.contacts, function(contact){
+                if(contact.Favorite === true)
+                    countFavorite++;
+            });
+        }
+
+        function isListEmpty(){
+            if (countFavorite > 0){
+                return false;
+            }
+            else{
+                return true;
+            }
         }
     }
 })();
